@@ -1,0 +1,6 @@
+library(BiomassTracking)
+data(Udata)
+data(Vdata)
+data(Sdata)
+arena <- prepare.arena(Udata, Vdata, Sdata)
+usethis::use_data(arena)
