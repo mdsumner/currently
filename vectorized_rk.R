@@ -3,9 +3,8 @@ library(raadtools)
 ##curr <- readAll(readcurr(xylim = extent(100, 150, -60, -45)))
 
 fds <- "/rdsi/PRIVATE/raad/data_local/aad.gov.au/currents"
-ufiles <- list.files(fds, pattern = "fileu.*grd", full.names = TRUE)
-vfiles <- list.files(fds, pattern = "filev.*grd", full.names = TRUE)
-
+ufiles <- list.files(fds, pattern = "fileu.*grd", full.names = TRUE, recursive = TRUE)
+vfiles <- list.files(fds, pattern = "filev.*grd", full.names = TRUE, recursive = TRUE)
 ifile <- 1
 curr <- brick(raster(ufiles[ifile]), raster(vfiles[ifile]))
 vlen <- function(x) sqrt(x[[1]]^2 + x[[2]]^2)
