@@ -3,8 +3,11 @@ library(raadtools)
 ##curr <- readAll(readcurr(xylim = extent(100, 150, -60, -45)))
 
 fds <- "/rdsi/PRIVATE/raad/data_local/aad.gov.au/currents"
-ufiles <- list.files(fds, pattern = "fileu.*grd", full.names = TRUE, recursive = TRUE)
-vfiles <- list.files(fds, pattern = "filev.*grd", full.names = TRUE, recursive = TRUE)
+afiles <- raadfiles::get_raad_filenames(all = T)  %>% transmute(fullname = file.path(root, file))
+
+ufiles <- pull(afiles %>% dplyr::filter(stringr::str_detect(fullname, paste0(fds, ".*dt_south_polar_u.*grd"))))
+vfiles <- pull(afiles %>% dplyr::filter(stringr::str_detect(fullname, paste0(fds, ".*dt_south_polar_v.*grd"))))
+
 ifile <- 1
 curr <- brick(raster(ufiles[ifile]), raster(vfiles[ifile]))
 vlen <- function(x) sqrt(x[[1]]^2 + x[[2]]^2)
