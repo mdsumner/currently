@@ -4,12 +4,12 @@
 \name{rk-package}
 \alias{rk}
 \alias{rk-package}
-\title{rk: What the Package Does (One Line, Title Case)}
+\title{rk: Particle tracing using 'raadtools'}
 \description{
-What the package does (one paragraph).
+Particle tracing with current vectors.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com}
+\strong{Maintainer}: Michael Sumner \email{mdsumner@gmail.com}
 
 }
 \keyword{internal}

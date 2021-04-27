@@ -1,14 +1,21 @@
 Package: rk
-Version: 0.0.0.9000
-Title: What the Package Does (One Line, Title Case)
-Description: What the package does (one paragraph).
-Authors@R: person("First", "Last", , "first.last@example.com", c("aut", "cre"))
-License: What license it uses
+Version: 0.0.1
+Title: Particle Tracing Using 'raadtools' Surface Current Vector Fields
+Description: Particle tracing with current vectors. 
+Authors@R: person("Michael", "Sumner", , "mdsumner@gmail.com", c("aut", "cre"))
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 LinkingTo: 
     Rcpp
+Depends: R (>= 3.1)
 Imports: 
-    Rcpp
-RoxygenNote: 6.0.1
+    Rcpp, 
+    progress, 
+    raster,
+    tibble, 
+    stats, 
+    rgdal, 
+    memoise
+RoxygenNote: 7.1.1
