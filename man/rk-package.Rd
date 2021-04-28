@@ -4,7 +4,7 @@
 \name{rk-package}
 \alias{rk}
 \alias{rk-package}
-\title{rk: Particle tracing using 'raadtools'}
+\title{rk: Particle Tracing Using 'raadtools' Surface Current Vector Fields}
 \description{
 Particle tracing with current vectors.
 }

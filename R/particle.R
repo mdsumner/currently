@@ -9,12 +9,17 @@
 #' apply those to input points at the given time step. Runge-Kutta is used to generate 4 coefficients for the
 #' displacements.
 #'
+#' We can use 'start_date' and 'end_date' to specify the direction, the start is the time we begin the
+#' simulation at, and the end when it finishes. If the 'end_date' is prior to the 'start_date' the time step
+#' is negated internally.
+#'
 #' @param xy input point/s in longitude,latitude
 #' @param time_step duration of model time step (positive, in seconds)
 #' @param start_date time to start the model (can be of type Date but beware doing your own math mixing Date/POSIXct)
-#' @param end_date time to end the model (assumed prior to start_date)
+#' @param end_date time to end the model (may be prior to or preceding start_date)
 #' @param method in the raster lookup, may be 'bilinear' or 'simple'
 #' @param plot plot the points or not (makes it slower)
+#' @param silent suppress any message
 #'
 #' @importFrom memoise memoize
 #' @importFrom progress progress_bar
@@ -28,19 +33,24 @@ particle_trace <- function(xy,
                            time_step = 24 * 3600,
                            start_date = NULL,
                            end_date = NULL,
-                           method = "bilinear", plot = FALSE) {
+                           method = "bilinear", plot = FALSE, silent = FALSE) {
 
   readcurr_POLAR <- memoise::memoize(raadtools:::readcurr_polar)
+
+  if (time_step < 0) stop("'time_step' must be positive (use 'start_date' and 'end_date' to specify direction)")
 
   if (is.null(start_date)) stop("must specify start_date e.g. as.Date(\"2021-02-15\")")
   start_date <- as.POSIXct(start_date, tz = "UTC")
   if (is.null(end_date)) stop("must specify end_date e.g. as.Date(\"2021-02-15\")")
   end_date <- as.POSIXct(end_date, tz = "UTC")
+  if (end_date == start_date) stop("'end_date' must not be equal to 'start_date'")
+  if (end_date < start_date) time_step <- -time_step
+
   i <- 0
   model_time <- start_date
 
-  ## these are dates in reverse time
-  dates <- seq(start_date, end_date, by = -time_step)
+  ## these are in forward or reverse time depending on the relation of start to end
+  dates <- seq(start_date, end_date, by = time_step)
   N <- length(dates)
   l <- vector("list", N)
   ## ticker
