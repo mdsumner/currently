@@ -11,7 +11,8 @@ particle_trace(
   end_date = NULL,
   method = "bilinear",
   plot = FALSE,
-  silent = FALSE
+  silent = FALSE,
+  rk = FALSE
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ particle_trace(
 \item{plot}{plot the points or not (makes it slower)}
 
 \item{silent}{suppress any message}
+
+\item{rk}{use multiple coefficient Runge-Kutta (default is `FALSE`)}
 }
 \description{
 Create traces of particles from velocity vector fields. This assumes availability of the raadtools package.
@@ -37,7 +40,7 @@ Relies on polar versions of Copernicus altimetry surface velocity fields.
 
 This function is the high-level vectorized "use the raster package" version of some older C-based particle
 tracing code. The technique uses raster to extract the x and y displacements in surface current vectors, and
-apply those to input points at the given time step. Runge-Kutta is used to generate 4 coefficients for the
+apply those to input points at the given time step. Runge-Kutta can be used to generate 4 coefficients for the
 displacements.
 
 We can use 'start_date' and 'end_date' to specify the direction, the start is the time we begin the
