@@ -50,7 +50,7 @@ particle_trace <- function(xy,
 
   ## these are in forward or reverse time depending on the relation of start to end
   dates <- seq(start_date, end_date, by = time_step)
-  print(dates)
+
   N <- length(dates)
 
   if (!silent) {
