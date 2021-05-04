@@ -1,12 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rk
+# currently
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of rk is to particle trace.
+The goal of currently is to particle trace.
 
 ## Installation
 
@@ -14,7 +14,7 @@ And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("mdsumner/rk")
+devtools::install_github("mdsumner/currently")
 ```
 
 ## Example
@@ -24,7 +24,7 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(raadtools)  ## assuming version >= 0.6.0.9005
 
-library(rk) 
+library(currently) 
 
 
 pt0 <- cbind( 77 +  28.45/60, -63)

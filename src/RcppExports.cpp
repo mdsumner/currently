@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // rk
 List rk(NumericVector x, NumericVector y, NumericVector U, NumericVector V, IntegerVector m, IntegerVector n, NumericVector t_step);
-RcppExport SEXP _rk_rk(SEXP xSEXP, SEXP ySEXP, SEXP USEXP, SEXP VSEXP, SEXP mSEXP, SEXP nSEXP, SEXP t_stepSEXP) {
+RcppExport SEXP _currently_rk(SEXP xSEXP, SEXP ySEXP, SEXP USEXP, SEXP VSEXP, SEXP mSEXP, SEXP nSEXP, SEXP t_stepSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -21,4 +21,14 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(rk(x, y, U, V, m, n, t_step));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_currently_rk", (DL_FUNC) &_currently_rk, 7},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_currently(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }

@@ -1,7 +1,7 @@
 #' @keywords internal
 "_PACKAGE"
 
-#' @useDynLib 'rk', .registration = TRUE
+#' @useDynLib 'currently', .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 NULL
 

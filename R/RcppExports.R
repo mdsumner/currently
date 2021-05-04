@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 rk <- function(x, y, U, V, m, n, t_step) {
-    .Call(`_rk_rk`, x, y, U, V, m, n, t_step)
+    .Call(`_currently_rk`, x, y, U, V, m, n, t_step)
 }
 

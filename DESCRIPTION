@@ -1,5 +1,5 @@
-Package: rk
-Version: 0.0.1
+Package: currently
+Version: 0.1.0
 Title: Particle Tracing Using 'raadtools' Surface Current Vector Fields
 Description: Particle tracing with current vectors. 
 Authors@R: person("Michael", "Sumner", , "mdsumner@gmail.com", c("aut", "cre"))
