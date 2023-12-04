@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // rk
 List rk(NumericVector x, NumericVector y, NumericVector U, NumericVector V, IntegerVector m, IntegerVector n, NumericVector t_step);
 RcppExport SEXP _currently_rk(SEXP xSEXP, SEXP ySEXP, SEXP USEXP, SEXP VSEXP, SEXP mSEXP, SEXP nSEXP, SEXP t_stepSEXP) {

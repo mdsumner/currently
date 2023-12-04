@@ -1,8 +1,9 @@
 Package: currently
-Version: 0.1.0
+Version: 0.1.0.9001
 Title: Particle Tracing Using 'raadtools' Surface Current Vector Fields
 Description: Particle tracing with current vectors. 
-Authors@R: person("Michael", "Sumner", , "mdsumner@gmail.com", c("aut", "cre"))
+Authors@R: c(person("Michael", "Sumner", , "mdsumner@gmail.com", c("aut", "cre")), 
+             person("Thorsten", "Lenser", role = "ctb", comment = "wrote original particle code in https://github.com/AustralianAntarcticDivision/BioMassTracking"))
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -16,6 +17,6 @@ Imports:
     raster,
     tibble, 
     stats, 
-    rgdal, 
+    reproj,
     memoise
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3

@@ -25,7 +25,7 @@
 #' @importFrom memoise memoize
 #' @importFrom progress progress_bar
 #' @importFrom raster extract projection
-#' @importFrom rgdal project
+#' @importFrom reproj reproj_xy
 #' @importFrom stats setNames
 #' @importFrom tibble as_tibble
 #' @importFrom graphics plot points
@@ -67,7 +67,7 @@ particle_trace <- function(xy,
     model_time <- dates[jj]
     curr <- readcurr_POLAR(model_time, inputfiles = files)
     if (jj == 1L) {
-      xy <-   rgdal::project(xy, raster::projection(curr))
+      xy <-   reproj::reproj_xy(xy, raster::projection(curr), source = "+proj=longlat +datum=WGS84")
       if (plot) plot(xy, asp = 1)
     }
 
@@ -93,7 +93,7 @@ particle_trace <- function(xy,
 
   pts <- setNames(tibble::as_tibble(do.call(rbind, l)), c("x", "y"))
   pts$group <- rep(1:nrow(l[[1]]), length.out = nrow(pts))
-  pts[c("lon", "lat")] <- rgdal::project(cbind(pts$x, pts$y), projection(curr), inv = T)
+  pts[c("lon", "lat")] <- reproj::reproj_xy(cbind(pts$x, pts$y), "+proj=longlat +datum=WGS84", source = projection(curr))
   pts$date <- rep(dates, lengths(l)/ncol(l[[1]]))
   pts
 }

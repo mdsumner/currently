@@ -11,5 +11,10 @@ Particle tracing with current vectors.
 \author{
 \strong{Maintainer}: Michael Sumner \email{mdsumner@gmail.com}
 
+Other contributors:
+\itemize{
+  \item Thorsten Lenser (wrote original particle code in https://github.com/AustralianAntarcticDivision/BioMassTracking) [contributor]
+}
+
 }
 \keyword{internal}
