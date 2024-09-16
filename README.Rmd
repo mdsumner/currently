@@ -47,15 +47,17 @@ pts <- cbind(jitter(rep(pt0[1], nn), factor = 0.15),
 
 sdate <- as.POSIXct(as.Date("2021-02-15"))
 duration <- 6 * 7 * 24 * 3600
+#duration <- 2 * 24 * 3600
 
-
-d <- particle_trace(pts, time_step = 6 * 3600, start_date = sdate, end_date = sdate - duration)
-
+d <- particle_trace(pts, time_step = 6 * 3600, start_date = sdate, end_date = sdate + duration)
+dl <- particle_trace_ll(pts, time_step = 6 * 3600, start_date = sdate, end_date = sdate + duration)
 library(ggplot2)
-#ddt <- as.data.frame(setNames(topo, "z"), xy = TRUE)
-
 ggplot() + #geom_raster(data = ddt, aes(x, y, fill = z))
   geom_point(data = d, aes(lon, lat, col = date, fill = NULL)) + coord_fixed(2.2)
+
+library(ggplot2)
+ggplot() + #geom_raster(data = ddt, aes(x, y, fill = z))
+  geom_point(data = dl, aes(x, y, col = date, fill = NULL)) + coord_fixed(2.2)
 
 
 ```

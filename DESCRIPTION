@@ -1,5 +1,5 @@
 Package: currently
-Version: 0.1.0.9001
+Version: 0.2.0
 Title: Particle Tracing Using 'raadtools' Surface Current Vector Fields
 Description: Particle tracing with current vectors. 
 Authors@R: c(person("Michael", "Sumner", , "mdsumner@gmail.com", c("aut", "cre")), 
@@ -19,4 +19,4 @@ Imports:
     stats, 
     reproj,
     memoise
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2

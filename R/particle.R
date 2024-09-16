@@ -2,7 +2,9 @@
 #'
 #' Create traces of particles from velocity vector fields. This assumes availability of the raadtools package.
 #'
-#' Relies on polar versions of Copernicus altimetry surface velocity fields.
+#' Function 'particle_trace' relies on polar versions of Copernicus altimetry surface velocity fields.
+#'
+#' Function 'particle_trace_ll' can use any function that returns 'u' and 'v' in a two layer raster in a longlat field.
 #'
 #' This function is the high-level vectorized "use the raster package" version of some older C-based particle
 #' tracing code. The technique uses raster to extract the x and y displacements in surface current vectors, and
@@ -30,6 +32,8 @@
 #' @importFrom tibble as_tibble
 #' @importFrom graphics plot points
 #' @export
+#'
+#' @aliases particle_trace_ll
 particle_trace <- function(xy,
                            time_step = 24 * 3600,
                            start_date = NULL,
@@ -73,7 +77,8 @@ particle_trace <- function(xy,
 
     ##i <- i + 1
     ## first coefficient
-    uv0 <- extract(curr, xy, method = method)
+
+    uv0 <- raster::extract(curr, xy, method = method)
     if (rk) {
       ## second coefficient
       uv1 <- extract(curr, xy + (uv0 * time_step)/2, method = method)
@@ -97,3 +102,12 @@ particle_trace <- function(xy,
   pts$date <- rep(dates, lengths(l)/ncol(l[[1]]))
   pts
 }
+
+
+
+
+
+
+
+
+

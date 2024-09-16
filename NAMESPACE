@@ -2,6 +2,7 @@
 
 export(grid_around)
 export(particle_trace)
+export(particle_trace_ll)
 export(rk0)
 importFrom(Rcpp,sourceCpp)
 importFrom(graphics,plot)
